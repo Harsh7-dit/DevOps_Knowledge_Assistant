@@ -1,7 +1,7 @@
 from ingestion.loader import load_documents
 from ingestion.chunker import split_documents
 from ingestion.embedder import get_embeddings
-from ingestion.langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 
 def run_pipeline(file_path):
     docs = load_documents(file_path)

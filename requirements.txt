@@ -1,0 +1,22 @@
+# Core LangChain
+langchain
+
+# Community integrations (loaders, vectorstores, etc.)
+langchain-community
+
+# ChromaDB (vector database)
+chromadb
+
+# Ollama integration
+langchain-ollama
+
+# Document loaders
+pypdf
+python-docx
+unstructured
+
+# (Optional) FastAPI for future API exposure
+fastapi
+uvicorn
+
+docx2txt
