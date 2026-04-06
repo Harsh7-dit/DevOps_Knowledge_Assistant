@@ -53,7 +53,7 @@ def ask_question(query):
     return response
 
 if __name__ == "__main__":
-    question = "What is Kubernetes master node?"
+    question = "Step 2. Updating system packages and installing Minikube dependencies"
     answer = ask_question(question)
 
     print("\nAnswer:\n", answer)
