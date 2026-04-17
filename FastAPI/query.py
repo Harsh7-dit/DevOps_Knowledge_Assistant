@@ -4,7 +4,7 @@ from langchain_ollama import OllamaLLM
 
 def load_vectorstore():
     return Chroma(
-        persist_directory="./vectorstore",
+        persist_directory="../vectorstore",
         embedding_function=OllamaEmbeddings(model="nomic-embed-text")
     )
 

@@ -1,0 +1,17 @@
+services:
+
+  backend:
+    image: backendimage:latest
+    container_name: devops-backend
+    ports:
+      - "8000:8000"
+    restart: always
+
+  frontend:
+    image: frontendimage:latest
+    container_name: devops-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always

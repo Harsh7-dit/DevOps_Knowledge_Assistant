@@ -26,7 +26,9 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://34.239.162.206:8000/ask", {
+      const response = await fetch(
+	      `http://${process.env.REACT_APP_API_URL}:8000/ask`,
+        {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -50,10 +52,58 @@ function App() {
 
     setLoading(false);
   };
+  
+  const [uploading, setUploading] = useState(false);
+  const uploadFile = async (event) => {
+  const file = event.target.files[0];
+
+  if (!file) return;
+	  
+  setUploading(true);
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try {
+    await fetch(
+	    `http://${process.env.REACT_APP_API_URL}:8000/upload`, {
+      method: "POST",
+      body: formData
+    });
+
+    alert("✅ File uploaded & indexed successfully!");
+  } catch (err) {
+    alert("❌ Upload failed");
+  }
+  setUploading(false);	  
+  };
 
   return (
     <div style={{ maxWidth: "700px", margin: "auto", padding: "20px" }}>
       <h2>DevOps Assistant 🤖</h2>
+
+      <input
+        type="file"
+        id="fileUpload"
+        style={{ display: "none" }}
+        onChange={uploadFile}
+      />
+
+      <button
+        onClick={() => document.getElementById("fileUpload").click()}
+        disabled={uploading}
+	style={{
+        padding: "8px",
+        marginBottom: "10px",
+        background: "#28a745",
+        color: "white",
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer"
+        }}
+      >
+      {uploading ? "Uploading..." : "Upload Document 📄"}
+      </button> 	  
 
       {/* 🔥 Chat Container */}
       <div

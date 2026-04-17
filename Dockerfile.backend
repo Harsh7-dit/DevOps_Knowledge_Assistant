@@ -1,0 +1,25 @@
+#The image
+FROM python:3.9-slim
+
+#Working Directory inside the Container
+WORKDIR /app
+
+# Copy the python requirement file
+COPY requirements.txt .
+
+# Install python Dependencies
+# --no-cache-dir to reduce Docker image size by preventing pip from storing unnecessary cache files.
+RUN pip install --no-cache-dir -r requirements.txt
+
+# COPY the files 
+COPY app.py main.py .
+COPY FastAPI/ FastAPI/
+COPY ingestion/ ingestion/
+
+RUN mkdir -p /app/vectorstore /app/uploads
+
+# Expose the port 
+EXPOSE 8000
+
+# To run the backend 
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
