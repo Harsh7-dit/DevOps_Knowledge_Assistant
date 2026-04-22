@@ -3,8 +3,7 @@ services:
   backend:
     image: backendimage:latest
     container_name: devops-backend
-    ports:
-      - "8000:8000"
+    network_mode: "host"
     restart: always
 
   frontend:

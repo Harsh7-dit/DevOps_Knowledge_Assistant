@@ -5,14 +5,16 @@ from langchain_ollama import OllamaLLM
 def load_vectorstore():
     return Chroma(
         persist_directory="../vectorstore",
-        embedding_function=OllamaEmbeddings(model="nomic-embed-text")
+        embedding_function=OllamaEmbeddings(model="nomic-embed-text",
+                                            base_url="http://localhost:11434")
     )
 
 
 # Load the LLM
 
 def load_llm():
-    return OllamaLLM(model="tinyllama")
+    return OllamaLLM(model="tinyllama",
+                     base_url="http://localhost:11434")
 
 def ask_question(query):
     db = load_vectorstore()
