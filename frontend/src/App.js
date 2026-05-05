@@ -27,7 +27,7 @@ function App() {
 
     try {
       const response = await fetch(
-	      `http://${process.env.REACT_APP_API_URL}:8000/ask`,
+	      `http://${process.env.REACT_APP_API_URL}:30080/ask`,
         {
         method: "POST",
         headers: {
@@ -66,7 +66,7 @@ function App() {
 
   try {
     await fetch(
-	    `http://${process.env.REACT_APP_API_URL}:8000/upload`, {
+	    `http://${process.env.REACT_APP_API_URL}:30080/upload`, {
       method: "POST",
       body: formData
     });

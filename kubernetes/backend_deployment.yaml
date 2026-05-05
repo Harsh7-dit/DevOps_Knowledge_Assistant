@@ -12,9 +12,13 @@ spec:
       labels:
         app: backend
     spec:
+      imagePullSecrets:
+        - name: regcred
+
       containers:
         - name: backend
-          image: localhost:5000/devopsbackend:latest
+          image: 500204/devopsbackend:v2
+          imagePullPolicy: Always
           ports:
             - containerPort: 8000
       
